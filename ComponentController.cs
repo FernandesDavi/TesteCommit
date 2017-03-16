@@ -17,8 +17,11 @@ namespace Verifone.MES.Site.Controllers
         {
             _localizer = localizer;
         }
-
+        
         #region GET
+        public string a(){
+            println("a");
+            }
         [HttpGet]
         public IActionResult Index2()
         {
