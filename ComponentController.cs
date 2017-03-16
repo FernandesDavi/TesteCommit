@@ -21,6 +21,23 @@ namespace Verifone.MES.Site.Controllers
         #region GET
         public string a(){
             println("a");
+            }
+        [HttpGet]
+        public IActionResult Index2()
+        {
+            List<ViewComponents> entities = new List<ViewComponents>();
+            ViewBag.SearchModel = new ViewComponentFilter() { Status = true };
+            string componentSearch = HttpContext.Session.GetString("componentSearch");
+            string boolSearch = HttpContext.Session.GetString("componentBoolSearch");
+
+            if (!String.IsNullOrEmpty(boolSearch) && !String.IsNullOrEmpty(componentSearch))
+            {
+                entities = JsonConvert.DeserializeObject<List<ViewComponents>>(componentSearch);
+            }
+
+            HttpContext.Session.SetString("componentBoolSearch", "");
+            CheckForAlerts();
+            return View(entities);
         }
         [HttpGet]
         public IActionResult Index()
