@@ -47,6 +47,9 @@ namespace Verifone.MES.Site.Controllers
         // GET: /<controller>/
         #region GET
         [HttpGet]
+        public string teste(){
+            List<string> teste = new List<string>();
+        }
         public IActionResult Index()
         {
             List<ViewAreaFilter> view = new List<ViewAreaFilter>();
