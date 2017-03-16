@@ -22,6 +22,28 @@ namespace Verifone.MES.Site.Controllers
             _localizer = localizer;
         }
 
+		// GET: /<controller>/
+        #region GET
+        [HttpGet]
+        public IActionResult Index2()
+        {
+            List<ViewAreaFilter> view = new List<ViewAreaFilter>();
+            ViewBag.AreaType = GetAllAreaType().Select(x => new SelectListItem { Text = x.Name, Value = x.AreaTypeId.ToString() }).ToArray();
+            ViewBag.SerchArea = new ViewAreaFilter();
+
+            string componentSearch = HttpContext.Session.GetString("AreaSearch");
+            string boolSearch = HttpContext.Session.GetString("AreaBoolSearch");
+
+            if (!String.IsNullOrEmpty(boolSearch) && !String.IsNullOrEmpty(componentSearch))
+            {
+                view = JsonConvert.DeserializeObject<List<ViewAreaFilter>>(componentSearch);
+            }
+
+            HttpContext.Session.SetString("AreaBoolSearch", "");
+            CheckForAlerts();
+            return View(view);
+        }
+		
         // GET: /<controller>/
         #region GET
         [HttpGet]
