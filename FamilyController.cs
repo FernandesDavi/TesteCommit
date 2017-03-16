@@ -18,6 +18,23 @@ namespace Verifone.MES.Site.Controllers
             _localizer = localizer;
         }
         #region GET
+		public IActionResult IndexTeste()
+        {
+            List<ViewFamilyFilter> entities = new List<ViewFamilyFilter>();
+            ViewBag.SearchFamily = new ViewFamilyFilter();
+            string familySearch = HttpContext.Session.GetString("FamilySearch");
+            string boolSearch = HttpContext.Session.GetString("FamilyBoolSearch");
+
+            if (!String.IsNullOrEmpty(boolSearch) && !String.IsNullOrEmpty(familySearch))
+            {
+                entities = JsonConvert.DeserializeObject<List<ViewFamilyFilter>>(familySearch);
+            }
+
+            HttpContext.Session.SetString("FamilyBoolSearch", "");
+            CheckForAlerts();
+            return View(entities);
+        }
+		
         [HttpGet]
         public IActionResult Index()
         {
