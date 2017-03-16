@@ -18,6 +18,10 @@ namespace Verifone.MES.Site.Controllers
             _localizer = localizer;
         }
         #region GET
+        public FamilyController(IStringLocalizer<FamilyController> localizer)
+        {
+            _localizer = localizer;
+        }
         [HttpGet]
         public IActionResult Index()
         {
