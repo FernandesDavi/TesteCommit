@@ -20,7 +20,12 @@ namespace Verifone.MES.Site.Controllers
     public class UserAccountController : BaseController
     {
         private readonly IStringLocalizer<UserAccountController> _localizer;
-
+        public PartialViewResult Edit(int id)
+        {
+            ViewUserAccountRegister view = GetById(id);            
+            return PartialView(view);
+        }
+        
         public UserAccountController(IStringLocalizer<UserAccountController> localizer)
         {
             _localizer = localizer;
