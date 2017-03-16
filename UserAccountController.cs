@@ -25,7 +25,11 @@ namespace Verifone.MES.Site.Controllers
         {
             _localizer = localizer;
         }
-        
+        public string olamundo()
+        {
+            var a = "das";
+            return a;
+        }
         [HttpGet]
         public IActionResult NoAccess()
         {
