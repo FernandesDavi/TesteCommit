@@ -14,7 +14,7 @@ using Microsoft.AspNetCore.Http;
 namespace Verifone.MES.Site.Controllers
 {
     public class AreaController : BaseController
-    {
+    { 
         private readonly IStringLocalizer<AreaController> _localizer;
 
         public AreaController(IStringLocalizer<AreaController> localizer)
