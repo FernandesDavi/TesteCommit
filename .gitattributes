@@ -1,0 +1,2 @@
+text diff=csharp
+*.cs diff=csharp
